@@ -9,8 +9,6 @@
 
           <h3><?php echo (Security::GetLoggedUser())->getId()?></h3>
 
-          <?php var_dump($MODEL)?>
-
       </header>
       <div class="panel-body">
         <table class="table table-striped table-hover dt-datatable">
@@ -25,15 +23,15 @@
           </thead>
           <tbody>
             <?php
-              foreach ($MODEL as $appointment) { 
+              foreach ($MODEL as $temporal) { 
             ?>
               <tr>
-                <td><?=$appointment->getCode()?></td>
-                <td><?=$appointment->getSpeciality()?></td>
-                <td><?=$appointment->getDoctor()?></td>
-                <td><?=$appointment->getUserId()?></td>
-                <td><?=$appointment->getDate()?></td>
-                <td><?=$appointment->getTime()?></td>
+                <td><?=$temporal->getCode()?></td>
+                <td><?=$temporal->getSpeciality()?></td>
+                <td><?=$temporal->getDoctor()?></td>
+                <td><?=$temporal->getUserId()?></td>
+                <td><?=$temporal->getDate()?></td>
+                <td><?=$temporal->getTime()?></td>
               </tr>
             <?php 
               }

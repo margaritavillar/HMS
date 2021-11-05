@@ -1,4 +1,5 @@
 <?php
+
 class AuthenticationController extends BaseController {
     
     public function __CONSTRUCT (){}
@@ -32,6 +33,20 @@ class AuthenticationController extends BaseController {
         Security::DeleteSession();
         parent::RedirectToController('Authentication');
     }
+
+
+
+    public function Register () {
+
+        parent::RenderPage(
+            'Users', 
+            'view/shared/dtadmin/layout.php', 
+            'view/users/register.php'     
+        );
+    }
+
+
+
     
 }
 

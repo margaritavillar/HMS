@@ -101,6 +101,33 @@ class User {
 
   }
 
+
+  /**
+   * Inserts the current user on the database
+   *
+   * @return void
+   */
+  public function Create () {
+    $db = (new DataBase())->CreateConnection();
+    $statement = $db->prepare(
+      'INSERT INTO `users` (`IDCARD`, `NAME`, `LASTNAME`, `PHONE`, `EMAIL`, `USERNAME`, `PASSWORD`, `ROLE`) 
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
+    );
+    $pwd = Security::HashPassword($this->password);
+    $statement->bind_param(
+      'ssssssss',
+      $this->idCard,
+      $this->name,
+      $this->lastName,
+      $this->phone,
+      $this->email,
+      $this->username,
+      $pwd,
+      $this->role
+    );
+    $statement->execute();
+  }
+
   /**
    * Fetches a user by the given id
    *
@@ -140,30 +167,21 @@ class User {
     return $models;
   }
 
-  /**
-   * Inserts the current user on the database
-   *
-   * @return void
-   */
-  public function Create () {
+
+  public static function GetAllDoctors () {
+    $models = [];
+    $role = 'DOCTOR';
     $db = (new DataBase())->CreateConnection();
-    $statement = $db->prepare(
-      'INSERT INTO `users` (`IDCARD`, `NAME`, `LASTNAME`, `PHONE`, `EMAIL`, `USERNAME`, `PASSWORD`, `ROLE`) 
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
-    );
-    $pwd = Security::HashPassword($this->password);
-    $statement->bind_param(
-      'ssssssss',
-      $this->idCard,
-      $this->name,
-      $this->lastName,
-      $this->phone,
-      $this->email,
-      $this->username,
-      $pwd,
-      $this->role
-    );
-    $statement->execute();
+    $statement = $db->prepare('SELECT `USERNAME`, `IDCARD`, `NAME`, `LASTNAME`, `ID` FROM `users` WHERE `ROLE` = ?');
+    $statement->bind_param('s', $role);
+    $statement->bind_result($USERNAME, $IDCARD, $NAME, $LASTNAME, $ID);
+    if ($statement->execute()) {
+      while ($row = $statement->fetch()) {
+        $model = new User($USERNAME, $IDCARD, $NAME, $LASTNAME, $ID);
+        array_push($models, $model);
+      }
+    }
+    return $models;
   }
 
   /**

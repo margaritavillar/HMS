@@ -98,7 +98,7 @@ public static function GetAllAppointments () {
 
 
 public static function GetAppointmentByDoctor ($doctor) {
-    $model = null;
+    $models = [];
     $db = (new DataBase())->CreateConnection();
     $statement = $db->prepare('SELECT `CODE`, `SPECIALITY`, `DOCTOR`, `PRICE`, `USERID`, `DATE`, `TIME`,`ID` FROM `SERVICES1` WHERE `DOCTOR` = ?');
     $statement->bind_param('i', $doctor);
@@ -106,14 +106,14 @@ public static function GetAppointmentByDoctor ($doctor) {
     if ($statement->execute()) {
       while ($row = $statement->fetch()) {
         $model = new Temporal($CODE, $SPECIALITY, $DOCTOR, $PRICE, $USERID, $DATE, $TIME, $ID);
+        array_push($models, $model);
       }
     }
-    return $model;
+    return $models;
   }
 
   public static function GetAppointmentByUser ($userId) {
-    $model = null;
-
+    $models = [];
 
     $db = (new DataBase())->CreateConnection();
     $statement = $db->prepare('SELECT `CODE`, `SPECIALITY`, `DOCTOR`, `PRICE`, `USERID`, `DATE`, `TIME`,`ID` FROM `SERVICES1` WHERE `USERID` = ?');
@@ -122,10 +122,11 @@ public static function GetAppointmentByDoctor ($doctor) {
     if ($statement->execute()) {
       while ($row = $statement->fetch()) {
         $model = new Temporal($CODE, $SPECIALITY, $DOCTOR, $PRICE, $USERID, $DATE, $TIME, $ID);
+        array_push($models, $model);
       }
     }
 
-    return $model;
+    return $models;
   }
   
 

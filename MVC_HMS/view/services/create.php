@@ -18,7 +18,7 @@
             </div>
             <div class="form-group col-md-4">
               <label for="doctor">Doctor</label>
-              <input type="text" class="form-control" id="doctor" name="doctor" placeholder="Doctor Name">
+              <input type="text" class="form-control" id="doctor" name="doctor" placeholder="Doctor Speciality">
             </div>
           </div>
           <div class="form-row">
@@ -39,5 +39,8 @@
         </form>
       </div>
     </section>
+
+<?php var_dump($MODEL); ?>
+
   </div>
 </div>

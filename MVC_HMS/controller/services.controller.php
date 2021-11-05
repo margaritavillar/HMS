@@ -53,10 +53,14 @@ class ServicesController extends BaseController {
             $model->Create();
     
         } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+            $model = User::GetAllDoctors();
+
             parent::RenderPage(
                 'Services',
                 'view/shared/dtadmin/layout.php', 
-                'view/services/create.php'
+                'view/services/create.php',
+                $model
             );
         }
     }
