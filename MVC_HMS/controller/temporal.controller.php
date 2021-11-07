@@ -55,6 +55,37 @@ class TemporalController extends BaseController {
     }
 
 
+public function Buy () {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $model = new Temporal(
+                $code = $_REQUEST['code'],
+                $speciality = $_REQUEST['speciality'],
+                $doctor = $_REQUEST['doctor'],
+                $price = $_REQUEST['price'],
+                $userId = (int)$_REQUEST['userId'],
+                $date = $_REQUEST['date'],
+                $time = $_REQUEST['time']
+            );
+
+            $model->Create1();
+
+            parent::RedirectToController('services');
+
+
+        } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $id = (int)$_REQUEST['id'];
+            $model = Service::GetServiceById($id);
+            parent::RenderPage(
+                'Services',
+                'view/shared/dtadmin/layout.php', 
+                'view/services/buy.php',
+                $model
+            );
+        }
+    }
+
+
 
 
 
