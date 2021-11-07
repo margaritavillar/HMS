@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : mer. 03 nov. 2021 à 20:46
--- Version du serveur :  10.4.11-MariaDB
--- Version de PHP : 7.2.31
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 08-11-2021 a las 00:44:24
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.2.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `hms`
+-- Base de datos: `hms`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `appointments`
+-- Estructura de tabla para la tabla `appointments`
 --
 
 CREATE TABLE `appointments` (
@@ -36,7 +36,7 @@ CREATE TABLE `appointments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `appointments`
+-- Volcado de datos para la tabla `appointments`
 --
 
 INSERT INTO `appointments` (`ID`, `USERID`, `SERVICEID`, `INVOICENUMBER`, `SALEDATE`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `appointments` (`ID`, `USERID`, `SERVICEID`, `INVOICENUMBER`, `SALED
 -- --------------------------------------------------------
 
 --
--- Structure de la table `services`
+-- Estructura de tabla para la tabla `services`
 --
 
 CREATE TABLE `services` (
@@ -53,23 +53,22 @@ CREATE TABLE `services` (
   `CODE` varchar(50) NOT NULL,
   `SPECIALITY` varchar(50) NOT NULL,
   `DOCTOR` varchar(1024) NOT NULL,
-  `PRICE` decimal(18,2) NOT NULL,
-  `QUANTITY` int(11) NOT NULL DEFAULT 0
+  `PRICE` decimal(18,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `services`
+-- Volcado de datos para la tabla `services`
 --
 
-INSERT INTO `services` (`ID`, `CODE`, `SPECIALITY`, `DOCTOR`, `PRICE`, `QUANTITY`) VALUES
-(19, 'DS001', 'Cardiology', 'Cielo Cortés', '100.00', 87),
-(20, 'DS002', 'Ginecology', 'Laura Villar', '100.00', 99),
-(21, 'DS001', 'Neurology', 'Steve Ataky', '150.00', 1000);
+INSERT INTO `services` (`ID`, `CODE`, `SPECIALITY`, `DOCTOR`, `PRICE`) VALUES
+(19, 'DS001', 'Cardiology', 'Cielo Cortés', '100.00'),
+(20, 'DS002', 'Ginecology', 'Laura Villar', '100.00'),
+(21, 'DS001', 'Neurology', 'Steve Ataky', '150.00');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `services1`
+-- Estructura de tabla para la tabla `services1`
 --
 
 CREATE TABLE `services1` (
@@ -78,14 +77,23 @@ CREATE TABLE `services1` (
   `SPECIALITY` varchar(50) NOT NULL,
   `DOCTOR` varchar(50) NOT NULL,
   `PRICE` varchar(50) NOT NULL,
+  `USERID` int(10) NOT NULL,
   `DATE` varchar(50) NOT NULL,
   `TIME` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `services1`
+--
+
+INSERT INTO `services1` (`ID`, `CODE`, `SPECIALITY`, `DOCTOR`, `PRICE`, `USERID`, `DATE`, `TIME`) VALUES
+(2, 'DS002', 'Ginecology', 'Laura Villar', '100.00', 8, '2021-11-24', '10:04'),
+(3, 'DS002', 'Ginecology', 'Laura Villar', '100.00', 8, '2021-11-18', '19:00');
+
 -- --------------------------------------------------------
 
 --
--- Structure de la table `settings`
+-- Estructura de tabla para la tabla `settings`
 --
 
 CREATE TABLE `settings` (
@@ -95,7 +103,7 @@ CREATE TABLE `settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `settings`
+-- Volcado de datos para la tabla `settings`
 --
 
 INSERT INTO `settings` (`ID`, `SKEY`, `SVALUE`) VALUES
@@ -104,7 +112,42 @@ INSERT INTO `settings` (`ID`, `SKEY`, `SVALUE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Estructura de tabla para la tabla `specialty`
+--
+
+CREATE TABLE `specialty` (
+  `ID` int(11) NOT NULL,
+  `SPECIALTY` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `specialty`
+--
+
+INSERT INTO `specialty` (`ID`, `SPECIALTY`) VALUES
+(1, 'Allergy'),
+(2, 'Anaesthesiology and resuscitation'),
+(3, 'Digestive system'),
+(4, 'Cardiology'),
+(5, 'Endocrinology and nutrition'),
+(6, 'Geriatrics'),
+(7, 'Haematology and hemotherapy'),
+(8, 'Intensive care'),
+(9, 'Internal medicine'),
+(10, 'Nephrology'),
+(11, 'Pulmonology'),
+(12, 'Medical oncology'),
+(13, 'Radiation oncology'),
+(14, 'Pediatrics'),
+(15, 'Psychiatry'),
+(16, 'Rheumatology'),
+(17, 'Family and community medicine'),
+(18, 'Optometry');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
 --
 
 CREATE TABLE `users` (
@@ -120,7 +163,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `users`
+-- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`ID`, `IDCARD`, `NAME`, `LASTNAME`, `PHONE`, `EMAIL`, `USERNAME`, `PASSWORD`, `ROLE`) VALUES
@@ -129,35 +172,35 @@ INSERT INTO `users` (`ID`, `IDCARD`, `NAME`, `LASTNAME`, `PHONE`, `EMAIL`, `USER
 (8, 'HMSC001', 'Client', 'One', '1234567890', 'client1@mail.com', 'client1', '$2y$10$REKK/YTtn/flJVFI4xwws.4xDJtqQ6c1qCc4MC8KJGAZcg.dNXnQe', 'CLIENT');
 
 --
--- Index pour les tables déchargées
+-- Índices para tablas volcadas
 --
 
 --
--- Index pour la table `appointments`
+-- Indices de la tabla `appointments`
 --
 ALTER TABLE `appointments`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Index pour la table `services`
+-- Indices de la tabla `services`
 --
 ALTER TABLE `services`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Index pour la table `services1`
+-- Indices de la tabla `services1`
 --
 ALTER TABLE `services1`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Index pour la table `settings`
+-- Indices de la tabla `settings`
 --
 ALTER TABLE `settings`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Index pour la table `users`
+-- Indices de la tabla `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`ID`),
@@ -167,23 +210,23 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `USERNAME` (`USERNAME`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT pour la table `services`
+-- AUTO_INCREMENT de la tabla `services`
 --
 ALTER TABLE `services`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT pour la table `services1`
+-- AUTO_INCREMENT de la tabla `services1`
 --
 ALTER TABLE `services1`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;

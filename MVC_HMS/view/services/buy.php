@@ -19,7 +19,7 @@
           <dt>Speciality</dt><dd><?= $MODEL->getSpeciality() ?></dd>
           <dt>Doctor</dt><dd><?= $MODEL->getDoctor() ?></dd>
           <dt>Price</dt><dd><?= $MODEL->getPrice() ?></dd>
-          <dt>Date & Time</dt><dd><input type="date" class="form-control" id="date" name="date"><input type="Time" class="form-control" id="time" name="time"></dd>
+          <dt>Date & Time</dt><dd><input type="date" class="form-control" id="date" name="date"><input type="Time" class="form-control" id="time" name="time" min="07:00" max="18:00"></dd>
         </dl>
         <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-cart-plus"></i>Book</button>
       </form>
