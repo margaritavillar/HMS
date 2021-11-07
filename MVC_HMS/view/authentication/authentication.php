@@ -21,5 +21,5 @@
   <br><br>
 
 <div>
-  <a href="?c=users&a=Register">Register</a>
+  <a href="?c=authentication&a=Register">Register</a>
 </div>

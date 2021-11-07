@@ -13,7 +13,6 @@
             <dt>Speciality</dt><dd><?= $MODEL->getSpeciality() ?></dd>
             <dt>Doctor</dt><dd><?= $MODEL->getDoctor() ?></dd>
             <dt>Price</dt><dd><?= $MODEL->getPrice() ?></dd>
-            <dt>Quantity</dt><dd><?= $MODEL->getQuantity() ?></dd>
           </dl>
           <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>Delete Service</button>
         </form>

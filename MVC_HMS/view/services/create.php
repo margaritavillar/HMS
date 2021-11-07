@@ -12,23 +12,32 @@
               <label for="code">Code</label>
               <input type="text" class="form-control" id="code" name="code" placeholder="Código">
             </div>
+
             <div class="form-group col-md-4">
-              <label for="speciality">Speciality</label>
-              <input type="text" class="form-control" id="speciality" name="speciality" placeholder="Doctor Speciality">
+              <label for="speciality">Specialty</label>
+              <!-- <input type="text" class="form-control" id="speciality" name="speciality" placeholder="Doctor Speciality"> -->
+
+              <select id="speciality" name="speciality" class="form-control" id="speciality">
+                <?=service::GetAllSpecialties()?>;
+              </select>
             </div>
+
             <div class="form-group col-md-4">
               <label for="doctor">Doctor</label>
-              <input type="text" class="form-control" id="doctor" name="doctor" placeholder="Doctor Speciality">
+              <input type="text" class="form-control" id="doctor" name="doctor" placeholder="Doctor name">
+<!-- 
+              <select class="form-control" id="doctor" name="doctor">
+                
+                
+              </select> -->
+              
             </div>
+
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="price">Price</label>
                 <input type="text" class="form-control" id="price" name="price" placeholder="Price">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="quantity">Quantity</label>
-              <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Quantity">
             </div>
           </div>
           <div class="form-row">

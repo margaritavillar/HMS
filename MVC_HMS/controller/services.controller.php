@@ -21,10 +21,10 @@ class ServicesController extends BaseController {
                 $_REQUEST['speciality'],
                 $_REQUEST['doctor'],
                 $_REQUEST['price'],
-                $_REQUEST['quantity'],
                 $_REQUEST['id']
             );
             $model->Edit();
+            parent::RedirectToController('services');
     
         } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $id = (int)$_REQUEST['id'];
@@ -46,11 +46,13 @@ class ServicesController extends BaseController {
                 $_REQUEST['code'], 
                 $_REQUEST['speciality'],
                 $_REQUEST['doctor'],
-                $_REQUEST['price'],
-                $_REQUEST['quantity']
+                $_REQUEST['price']
+                //$_REQUEST['quantity']
             );
 
             $model->Create();
+            parent::RedirectToController('services');
+
     
         } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 

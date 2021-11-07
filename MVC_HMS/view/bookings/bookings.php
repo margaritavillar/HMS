@@ -7,7 +7,7 @@
         <?php } else { ?>
           <h1>My Appointments</h1>
 
-          <h3><?php echo (Security::GetLoggedUser())->getId()?></h3>
+          <h3><?php echo (Security::GetLoggedUser())->getLastName()?>,<?php echo (Security::GetLoggedUser())->getName()?></h3>
 
       </header>
       <div class="panel-body">
@@ -23,15 +23,15 @@
           </thead>
           <tbody>
             <?php
-              foreach ($MODEL as $temporal) { 
+              foreach ($MODEL as $booking) { 
             ?>
               <tr>
-                <td><?=$temporal->getCode()?></td>
-                <td><?=$temporal->getSpeciality()?></td>
-                <td><?=$temporal->getDoctor()?></td>
-                <td><?=$temporal->getUserId()?></td>
-                <td><?=$temporal->getDate()?></td>
-                <td><?=$temporal->getTime()?></td>
+                <td><?=$booking->getCode()?></td>
+                <td><?=$booking->getSpeciality()?></td>
+                <td><?=$booking->getDoctor()?></td>
+                <td><?=$booking->getUserId()?></td>
+                <td><?=$booking->getDate()?></td>
+                <td><?=$booking->getTime()?></td>
               </tr>
             <?php 
               }

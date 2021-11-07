@@ -11,7 +11,6 @@
           <dt>Speciality</dt><dd><?= $MODEL->getSpeciality() ?></dd>
           <dt>Doctor</dt><dd><?= $MODEL->getDoctor() ?></dd>
           <dt>Price</dt><dd><?= $MODEL->getPrice() ?></dd>
-          <dt>Quantity</dt><dd><?= $MODEL->getQuantity() ?></dd>
         </dl>
       </div>
     </section>

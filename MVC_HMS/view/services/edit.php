@@ -26,10 +26,6 @@
                 <label for="price">Price</label>
                 <input value="<?= $MODEL->getPrice() ?>" type="text" class="form-control" id="price" name="price" placeholder="Price">
             </div>
-            <div class="form-group col-md-6">
-              <label for="quantity">Quantity</label>
-              <input value="<?= $MODEL->getQuantity() ?>" type="number" class="form-control" id="quantity" name="quantity" placeholder="Quantity">
-            </div>
           </div>
 
           <div class="form-row">

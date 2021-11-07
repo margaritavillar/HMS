@@ -7,7 +7,7 @@
 
     </header>
     <div class="panel-body">
-      <form action="?c=temporal&a=Buy" method="POST">
+      <form action="?c=booking&a=Buy" method="POST">
         <input type="hidden" name="id" id="id" value="<?= $MODEL->getId() ?>" />
         <input type="hidden" name="code" id="code" value="<?= $MODEL->getCode() ?>" />
         <input type="hidden" name="speciality" id="speciality" value="<?= $MODEL->getSpeciality() ?>" />
@@ -19,10 +19,9 @@
           <dt>Speciality</dt><dd><?= $MODEL->getSpeciality() ?></dd>
           <dt>Doctor</dt><dd><?= $MODEL->getDoctor() ?></dd>
           <dt>Price</dt><dd><?= $MODEL->getPrice() ?></dd>
-          <dt>Quantity</dt><dd><?= $MODEL->getQuantity() ?></dd>
           <dt>Date & Time</dt><dd><input type="date" class="form-control" id="date" name="date"><input type="Time" class="form-control" id="time" name="time"></dd>
         </dl>
-        <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-cart-plus"></i>Add to Cart</button>
+        <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-cart-plus"></i>Book</button>
       </form>
     </div>
   </section>

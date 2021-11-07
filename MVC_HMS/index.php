@@ -5,7 +5,7 @@ include_once('./model/user.class.php');
 include_once('./model/service.class.php');
 include_once('./model/setting.class.php');
 include_once('./model/shoppingcart.class.php');
-include_once('./model/temporal.class.php');
+include_once('./model/booking.class.php');
 //include_once('./model/vwsale.class.php');
 include_once('./database/database.class.php');
 include_once('./controller/base.controller.php');

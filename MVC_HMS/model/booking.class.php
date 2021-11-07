@@ -1,5 +1,5 @@
 <?php
-class Temporal {
+class Booking {
 
   /* Mapped */
 
@@ -64,11 +64,25 @@ class Temporal {
   }
 
 
+  /*public function ViewSpecialties()
+  {
+    //to populate dropdownlist with specialties
+    $db = (new DataBase())->CreateConnection();
+    $statement = $db->prepare('SELECT SPECIALTY FROM specialty');
+    
+    while ($row = $statement->fetch_assoc()){
+      echo "<option value=\"specialty1\">" . $row['SPECIALTY'] . "</option>";
+    $statement->execute();
+    }
+
+  }*/
+
+
   public function Create1 () {
 
       $db = (new DataBase())->CreateConnection();
       $statement = $db->prepare('INSERT INTO `SERVICES1`(`CODE`, `SPECIALITY`, `DOCTOR`, `PRICE`, `USERID`, `DATE`, `TIME` ) VALUES (?, ?, ?, ?, ?, ?, ?)');
-      $statement->bind_param(
+        $statement->bind_param(
         'ssssiss',
         $this->code,
         $this->speciality,
@@ -89,7 +103,7 @@ public static function GetAllAppointments () {
     $statement->bind_result($CODE, $SPECIALITY, $DOCTOR, $PRICE, $USERID, $DATE, $TIME);
     if ($statement->execute()) {
       while ($row = $statement->fetch()) {
-        $model = new Temporal($CODE, $SPECIALITY, $DOCTOR, $PRICE, $USERID, $DATE, $TIME);
+        $model = new Booking($CODE, $SPECIALITY, $DOCTOR, $PRICE, $USERID, $DATE, $TIME);
         array_push($models, $model);
       }
     }
@@ -105,7 +119,7 @@ public static function GetAppointmentByDoctor ($doctor) {
     $statement->bind_result($CODE, $SPECIALITY, $DOCTOR, $PRICE, $USERID, $DATE, $TIME, $ID);
     if ($statement->execute()) {
       while ($row = $statement->fetch()) {
-        $model = new Temporal($CODE, $SPECIALITY, $DOCTOR, $PRICE, $USERID, $DATE, $TIME, $ID);
+        $model = new Booking($CODE, $SPECIALITY, $DOCTOR, $PRICE, $USERID, $DATE, $TIME, $ID);
         array_push($models, $model);
       }
     }
@@ -121,7 +135,7 @@ public static function GetAppointmentByDoctor ($doctor) {
     $statement->bind_result($CODE, $SPECIALITY, $DOCTOR, $PRICE, $USERID, $DATE, $TIME, $ID);
     if ($statement->execute()) {
       while ($row = $statement->fetch()) {
-        $model = new Temporal($CODE, $SPECIALITY, $DOCTOR, $PRICE, $USERID, $DATE, $TIME, $ID);
+        $model = new Booking($CODE, $SPECIALITY, $DOCTOR, $PRICE, $USERID, $DATE, $TIME, $ID);
         array_push($models, $model);
       }
     }

@@ -1,5 +1,5 @@
 <?php
-class TemporalController extends BaseController {
+class BookingController extends BaseController {
     
     public function __CONSTRUCT (){}
     
@@ -8,12 +8,12 @@ class TemporalController extends BaseController {
         
         $userId = $_REQUEST['id'];
         //$userId = Security::GetLoggedUser()->getId();
-        $model = Temporal::GetAppointmentByUser($userId);
+        $model = Booking::GetAppointmentByUser($userId);
 
         parent::RenderPage(
-                'Temporals', 
+                'Bookings', 
                 'view/shared/dtadmin/layout.php', 
-                'view/temporals/temporals.php',
+                'view/bookings/bookings.php',
                 $model
                 );
 
@@ -58,7 +58,7 @@ class TemporalController extends BaseController {
 public function Buy () {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $model = new Temporal(
+            $model = new Booking(
                 $code = $_REQUEST['code'],
                 $speciality = $_REQUEST['speciality'],
                 $doctor = $_REQUEST['doctor'],

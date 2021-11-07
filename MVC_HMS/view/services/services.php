@@ -16,7 +16,7 @@
               <th>Speciality</th>
               <th>Doctor</th>
               <th>Price</th>
-              <th>Quantity</th>
+              
               <th class="no-sort">Actions</th>
             </tr>
           </thead>
@@ -29,7 +29,7 @@
                 <td><?=$service->getSpeciality()?></td>
                 <td><?=$service->getDoctor()?></td>
                 <td><?=$service->getPrice()?></td>
-                <td><?=$service->getQuantity()?></td>
+                
                 <?php if ((Security::GetLoggedUser())->getRole() == 'ADMIN') { ?>
                 <td>
                     <a class="fa fa-eye btn btn-info btn-sm" href="?c=services&a=Details&id=<?=$service->getId()?>">Details</a>
@@ -38,7 +38,7 @@
                   </td>
                   <?php } else { ?>
                   <td>
-                    <a class="btn btn-primary btn-sm" href="?c=services&a=Buy&id=<?=$service->getId()?>"><i class="fa fa-cart-plus"></i>Add to cart</a>
+                    <a class="btn btn-primary btn-sm" href="?c=services&a=Buy&id=<?=$service->getId()?>"><i class="fa fa-cart-plus"></i>Book</a>
                   <?php } ?>
                 </td>
               </tr>

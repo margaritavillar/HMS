@@ -32,7 +32,7 @@
           </a>
         </li>
         <li>
-          <a href="?c=temporal&role=<?=(Security::GetLoggedUser())->getRole()?>" class="<?=(($PAGE == 'Temporals') ? 'active' : '')?>">
+          <a href="?c=booking&role=<?=(Security::GetLoggedUser())->getRole()?>" class="<?=(($PAGE == 'Bookings') ? 'active' : '')?>">
             <i class="fa fa-history" aria-hidden="true"></i>&nbsp;List of Appointments
           </a>
         </li>
@@ -64,7 +64,7 @@
           </a>
         </li>
         <li>
-          <a href="?c=temporal&role=<?=(Security::GetLoggedUser())->getRole()?>&id=<?=(Security::GetLoggedUser())->getId()?> " class="<?=(($PAGE == 'Temporals') ? 'active' : '')?>">
+          <a href="?c=booking&role=<?=(Security::GetLoggedUser())->getRole()?>&id=<?=(Security::GetLoggedUser())->getId()?> " class="<?=(($PAGE == 'Bookings') ? 'active' : '')?>">
             <i class="fa fa-history" aria-hidden="true"></i>&nbsp;List of Appointments
           </a>
         </li>

@@ -23,9 +23,9 @@ class Service {
   public function getPrice () { return $this->price; }
   public function setPrice ($price) { $this->price = $price; }
 
-  private $quantity; 
-  public function getQuantity () { return $this->quantity; }
-  public function setQuantity ($quantity) { $this->quantity = $quantity; }
+  // private $quantity; 
+  // public function getQuantity () { return $this->quantity; }
+  // public function setQuantity ($quantity) { $this->quantity = $quantity; }
 
   /* No-mapped */
 
@@ -38,14 +38,14 @@ class Service {
     $speciality = '',
     $doctor = '',
     $price = 0.0,
-    $quantity = 0,
+   // $quantity = 0,
     $id = null
   ) {
     $this->code = $code;
     $this->speciality = $speciality;
     $this->doctor = $doctor;
     $this->price = $price;
-    $this->quantity = $quantity;
+    //$this->quantity = $quantity;
     $this->id = $id; 
     
     $this->cartUniqueId = uniqid('CART_');
@@ -54,12 +54,12 @@ class Service {
   public static function GetServiceById ($id) {
     $model = null;
     $db = (new DataBase())->CreateConnection();
-    $statement = $db->prepare('SELECT `CODE`, `SPECIALITY`, `DOCTOR`, `PRICE`, `QUANTITY`,`ID` FROM `SERVICES` WHERE `ID` = ?');
+    $statement = $db->prepare('SELECT `CODE`, `SPECIALITY`, `DOCTOR`, `PRICE`,`ID` FROM `SERVICES` WHERE `ID` = ?');
     $statement->bind_param('i', $id);
-    $statement->bind_result($CODE, $SPECIALITY, $DOCTOR, $PRICE, $QUANTITY, $ID);
+    $statement->bind_result($CODE, $SPECIALITY, $DOCTOR, $PRICE, $ID);
     if ($statement->execute()) {
       while ($row = $statement->fetch()) {
-        $model = new Service($CODE, $SPECIALITY, $DOCTOR, $PRICE, $QUANTITY, $ID);
+        $model = new Service($CODE, $SPECIALITY, $DOCTOR, $PRICE, $ID);
       }
     }
     return $model;
@@ -68,11 +68,11 @@ class Service {
   public static function GetAllServices () {
     $models = [];
     $db = (new DataBase())->CreateConnection();
-    $statement = $db->prepare('SELECT `CODE`, `SPECIALITY`, `DOCTOR`, `PRICE`, `QUANTITY`, `ID` FROM `SERVICES`');
-    $statement->bind_result($CODE, $SPECIALITY, $DOCTOR, $PRICE, $QUANTITY, $ID);
+    $statement = $db->prepare('SELECT `CODE`, `SPECIALITY`, `DOCTOR`, `PRICE`, `ID` FROM `SERVICES`');
+    $statement->bind_result($CODE, $SPECIALITY, $DOCTOR, $PRICE, $ID);
     if ($statement->execute()) {
       while ($row = $statement->fetch()) {
-        $model = new Service($CODE, $SPECIALITY, $DOCTOR, $PRICE, $QUANTITY, $ID);
+        $model = new Service($CODE, $SPECIALITY, $DOCTOR, $PRICE, $ID);
         array_push($models, $model);
       }
     }
@@ -81,14 +81,14 @@ class Service {
 
   public function Create () {
     $db = (new DataBase())->CreateConnection();
-    $statement = $db->prepare('INSERT INTO `SERVICES`(`CODE`, `SPECIALITY`, `DOCTOR`, `PRICE`, `QUANTITY`) VALUES (?, ?, ?, ?, ?)');
+    $statement = $db->prepare('INSERT INTO `SERVICES`(`CODE`, `SPECIALITY`, `DOCTOR`, `PRICE`) VALUES (?, ?, ?, ?)');
     $statement->bind_param(
-      'sssdi',
+      'sssd',
       $this->code,
       $this->speciality,
       $this->doctor,
-      $this->price,
-      $this->quantity
+      $this->price
+      //$this->quantity
     );
     $statement->execute();
   }
@@ -100,20 +100,19 @@ class Service {
         `CODE` = ?,
         `SPECIALITY` = ?,
         `DOCTOR` = ?,
-        `PRICE` = ?,
-        `QUANTITY` = ?
+        `PRICE` = ?
       WHERE `ID` = ?'
     );
     $statement->bind_param(
-      'sssdii',
+      'sssdi',
       $this->code,
       $this->speciality,
       $this->doctor,
       $this->price,
-      $this->quantity,
       $this->id
     );
     $statement->execute();
+    
   }
 
   public function Delete () {
@@ -123,7 +122,29 @@ class Service {
     $statement->execute();
   }
 
-  
+   public static function GetAllSpecialties () {
+    $db = (new DataBase())->CreateConnection();
+    $statement = $db->prepare('SELECT `ID`, `SPECIALTY` FROM `specialty`');
+    if ($statement->execute()) {
+      $statement->bind_result($ID, $SPECIALTY);
+      while ($statement->fetch()) {
+        echo "<option value=$SPECIALTY> $ID. $SPECIALTY</option>"; 
+        }
+      }
+    }
+
+
+    public static function GetDrNames () {
+      $db = (new DataBase())->CreateConnection();
+      $statement = $db->prepare('SELECT `NAME`, `LASTNAME` FROM `users` WHERE `ROLE` = `DOCTOR`');
+      if ($statement->execute()) {
+        $statement->bind_result($NAME, $LASTNAME);
+        while ($statement->fetch()) {
+          echo "<option value=$LASTNAME> $LASTNAME</option>"; 
+        }
+      }
+    }
+
 
 }
 ?>
