@@ -5,7 +5,7 @@ class Booking {
 
   private $id;
   public function getId () { return $this->id; }
-  private function setId ($id) { $this->id = $id; }
+  public function setId ($id) { $this->id = $id; }
 
   private $code; 
   public function getCode () { return $this->code; }
