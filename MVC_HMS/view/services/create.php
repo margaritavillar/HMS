@@ -49,7 +49,7 @@
       </div>
     </section>
 
-<?php var_dump($MODEL); ?>
+<!-- <?php //var_dump($MODEL); ?> -->
 
   </div>
 </div>

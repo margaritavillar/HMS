@@ -78,6 +78,36 @@ class UsersController extends BaseController {
         }
     }
 
+
+     public function RegisterPatient () {
+
+           
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $user = new User(
+                    $_REQUEST['username'], 
+                    $_REQUEST['password'],
+                    $_REQUEST['idCard'],
+                    $_REQUEST['name'],
+                    $_REQUEST['lastName'],
+                    $_REQUEST['phone'],
+                    $_REQUEST['email'],
+                    $_REQUEST['role']
+                );
+                $user->Create();
+                parent::RedirectToController('users');
+            } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                parent::RenderPage(
+                    'Users', 
+                    'view/shared/dtadmin/layout.php', 
+                    'view/users/create.php'
+                );
+            }
+        }
+
+
+
+
+
     public function Create () {
 
         $this->RedirectToHomeIfNotAdmin();

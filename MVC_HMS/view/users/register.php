@@ -5,7 +5,7 @@
         <h1>Register</h1>
       </header>
       <div class="panel-body">
-        <form action="?c=users&a=Create" method="POST" autocomplete="off">
+        <form action="?c=users&a=RegisterPatient" method="POST" autocomplete="off">
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="username">Username</label>
