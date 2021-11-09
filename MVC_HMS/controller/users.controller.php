@@ -94,12 +94,12 @@ class UsersController extends BaseController {
                     $_REQUEST['role']
                 );
                 $user->Create();
-                parent::RedirectToController('home');
+                parent::RedirectToController('users');
             } else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 parent::RenderPage(
                     'Users', 
                     'view/shared/dtadmin/layout.php', 
-                    'view/users/register.php'
+                    'view/users/create.php'
                 );
             }
         }

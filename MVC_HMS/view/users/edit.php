@@ -1,14 +1,15 @@
-<div class="row">
+ <br> <br> <br> <br><div class="row">
   <div class="col-lg-12">
     <section class="panel">
       <header class="panel-heading">
         <?php if ((Security::GetLoggedUser())->getRole() == 'ADMIN') { ?>
           <h1>Edit User</h1>
-          <a href="?c=users">Go Back</a>
+          <a href="?c=users" class="w3-button w3-teal">Go Back</a>
         <?php } else { ?>
           <h1>My Account</h1>
         <?php } ?>
       </header>
+        <br>
       <div class="panel-body">
         <form action="?c=users&a=Edit" method="POST" autocomplete="off">
           <div class="form-row">

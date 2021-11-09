@@ -79,7 +79,7 @@ class FrontController {
         // If this is a public request, just render
         if (FrontController::IsPublicRequest()) {  FrontController::RenderController(); return; }
         // Otherwise, force render authentication controller (Login screen)
-        //header('Location: ?c='.FrontController::kAuthenticationController);
+        header('Location: ?c='.FrontController::kAuthenticationController);
     }
 
 }

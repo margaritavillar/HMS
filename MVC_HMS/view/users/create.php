@@ -1,10 +1,11 @@
-<div class="row">
+ <br> <br> <br> <br><div class="row">
   <div class="col-lg-12">
     <section class="panel">
       <header class="panel-heading">
         <h1>Create User</h1>
-        <a href="?c=users">Go Back</a>
+        <a href="?c=users" class="w3-button w3-teal">Go Back</a>
       </header>
+        <br>
       <div class="panel-body">
         <form action="?c=users&a=Create" method="POST" autocomplete="off">
           <div class="form-row">

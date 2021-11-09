@@ -1,9 +1,9 @@
-<div class="row">
+ <br> <br> <br> <br><div class="row">
   <div class="col-lg-12">
     <section class="panel">
       <header class="panel-heading">
         <h1>Users</h1>
-        <a href="?c=users&a=Create" class="btn btn-success">Create</a>
+        <a href="?c=users&a=Create" class="w3-button w3-teal">Create</a>
       </header>
       <div class="panel-body">
         <table class="table table-striped table-hover dt-datatable">

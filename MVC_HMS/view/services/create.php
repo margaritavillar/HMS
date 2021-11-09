@@ -1,10 +1,11 @@
-<div class="row">
+ <br> <br> <br> <br><div class="row">
   <div class="col-lg-12">
     <section class="panel">
       <header class="panel-heading">
         <h1>Create Service</h1>
-        <a href="?c=services">Go back</a>
+        <a href="?c=services" class="w3-button w3-teal">Go back</a>
       </header>
+        <br>
       <div class="panel-body">
         <form action="?c=services&a=Create" method="POST" autocomplete="off" enctype="multipart/form-data">
           <div class="form-row">

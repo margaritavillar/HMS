@@ -1,11 +1,12 @@
-<div class="row">
+ <br> <br> <br> <br><div class="row">
 <div class="col-lg-6">
   <section class="panel">
     <header class="panel-heading">
       <h1>Book Appointment</h1>
-      <a href="?c=services">Go back</a>
+      <a href="?c=services" class="w3-button w3-teal">Go back</a>
 
     </header>
+      <br>
     <div class="panel-body">
       <form action="?c=booking&a=Buy" method="POST">
         <input type="hidden" name="id" id="id" value="<?= $MODEL->getId() ?>" />
